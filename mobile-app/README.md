@@ -54,3 +54,59 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+mobile-app/                                                                                                                      
+    ├── src/                                                                                                                         
+    │   ├── app/                                # Expo Router: screens, tabs, and layout routes                                      
+    │   │   ├── _layout.tsx                     # Root stack navigator and global app providers                                      
+    │   │   ├── (tabs)/                         # Bottom tab navigation group                                                        
+    │   │   │   ├── _layout.tsx                 # Bottom tab bar configuration (icons, labels, colors)                               
+    │   │   │   ├── index.tsx                   # Dashboard/Home tab: welcome banner, quick start, recent games                      
+    │   │   │   ├── record.tsx                  # Record tab: active game session, live timer, start/stop tracking                   
+    │   │   │   ├── history.tsx                 # History tab: past matches list and search/filter                                   
+    │   │   │   └── profile.tsx                 # Profile tab: user stats, personal records, and settings                            
+    │   │   └── session/                                                                                                             
+    │   │       └── [id].tsx                    # Detailed post-match review and analytics screen for a session                      
+    │   │                                                                                                                            
+    │   ├── features/                           # Feature-specific components and business logic                                     
+    │   │   ├── tracking/                                                                                                            
+    │   │   │   ├── components/                 # Live tracking UI: record button, timer display, live metrics                       
+    │   │   │   └── hooks/                      # Custom hooks for managing active session state and sensor intervals                
+    │   │   └── analytics/                                                                                                           
+    │   │       ├── components/                 # Post-game charts, pace graphs, and heatmap views                                   
+    │   │       └── utils/                      # Helper functions to calculate averages, top speed, and distance                    
+    │   │                                                                                                                            
+    │   ├── services/                           # Hardware integrations and persistent storage                                       
+    │   │   ├── sensors/                                                                                                             
+    │   │   │   ├── location.ts                 # GPS location subscriber and permission handling                                    
+    │   │   │   ├── accelerometer.ts            # Accelerometer sensor subscriber for movement intensity                             
+    │   │   │   └── sensorManager.ts            # Unified controller to start, pause, and stop all sensor listeners                  
+    │   │   └── storage/                                                                                                             
+    │   │       └── sessionRepo.ts              # Local database/storage CRUD operations to save and load sessions                   
+    │   │                                                                                                                            
+    │   ├── components/                         # Shared, reusable UI design system                                                  
+    │   │   ├── ui/                                                                                                                  
+    │   │   │   ├── Button.tsx                  # Reusable button component with primary, secondary, and danger styles               
+    │   │   │   ├── Card.tsx                    # Reusable container card with shadow and borders                                    
+    │   │   │   ├── Badge.tsx                   # Small status/sport pill tag (e.g., "Live", "Completed", "Basketball")              
+    │   │   │   └── Typography.tsx              # Standardized heading, body, and caption text wrappers                              
+    │   │   └── layout/                                                                                                              
+    │   │       └── ScreenWrapper.tsx           # SafeAreaView wrapper providing consistent padding and background color             
+    │   │                                                                                                                            
+    │   ├── types/                              # Shared TypeScript models and interfaces                                            
+    │   │   ├── session.ts                      # Type definitions for GameSession, SportType, and SessionStatus                     
+    │   │   ├── sensor.ts                       # Type definitions for raw GPS coordinates and accelerometer samples                 
+    │   │   └── metrics.ts                      # Type definitions for processed match metrics (distance, speed, zones)              
+    │   │                                                                                                                            
+    │   ├── constants/                          # Global theme and configuration constants                                           
+    │   │   ├── theme.ts                        # Design system colors, spacing, typography scales, and border radii                 
+    │   │   └── sports.ts                       # Sport configs and dimensions (e.g. Basketball, Football, Futsal)                   
+    │   │                                                                                                                            
+    │   └── utils/                              # General helper and formatting functions                                            
+    │       ├── time.ts                         # Formatters for elapsed time, stopwatches, and match timestamps                     
+    │       └── math.ts                         # Math utilities for distance calculation (Haversine) and speed conversions          
+    │
+    ├── assets/                                 # Static icons, splash screens, and sport court graphics
+    ├── app.json                                # Expo configuration and mobile permission settings
+    ├── package.json                            # Project dependencies and run scripts
+    └── tsconfig.json 

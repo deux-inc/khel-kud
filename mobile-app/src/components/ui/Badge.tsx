@@ -1,0 +1,1 @@
+// Small status/sport pill tag (e.g., "Live", "Completed", "Basketball")
