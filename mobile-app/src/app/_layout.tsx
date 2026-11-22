@@ -1,6 +1,13 @@
-// Root stack navigator and global app providers  
-import { Stack } from "expo-router";
+import { Stack } from 'expo-router';
+import React from 'react';
 
 export default function RootLayout() {
-  return <Stack />;
+  return (
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        contentStyle: { backgroundColor: '#0B0F17' },
+      }}
+    />
+  );
 }

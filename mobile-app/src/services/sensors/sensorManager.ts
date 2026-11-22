@@ -257,7 +257,7 @@ export class SensorManager {
         : accelSteps;
 
     // Instantaneous speed calculation (km/h) based on cadence and stride factor
-    const cadence = (this.stepDetector as any).calculateCadence?.(now) || 0;
+    const cadence = this.stepDetector.calculateCadence(now);
     const strideLength = this.sportConfig ? this.sportConfig.defaultStrideFactor * 1.6 : 0.75;
     const currentSpeedMps = (cadence / 60) * strideLength;
     const currentSpeedKmH = Math.round(currentSpeedMps * 3.6 * 10) / 10;

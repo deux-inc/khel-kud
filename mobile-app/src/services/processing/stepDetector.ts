@@ -119,7 +119,7 @@ export class DynamicStepDetector {
     };
   }
 
-  private calculateCadence(now: number): number {
+  public calculateCadence(now: number): number {
     // Purge timestamps older than 5 seconds
     this.recentStepTimes = this.recentStepTimes.filter((t) => now - t <= 5000);
 
