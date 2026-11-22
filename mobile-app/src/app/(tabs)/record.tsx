@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { router } from 'expo-router';
 import { Badge } from '../../components/ui/Badge';
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
@@ -16,6 +17,7 @@ import { CalibrationMode } from '../../features/tracking/components/CalibrationM
 import { LiveMetricGrid } from '../../features/tracking/components/LiveMetricGrid';
 import { SportSelector } from '../../features/tracking/components/SportSelector';
 import { sensorManager } from '../../services/sensors/sensorManager';
+import { sessionStorage } from '../../services/storage/sessionStorage';
 import { LiveTrackingMetrics, SessionState } from '../../types/sensor';
 import { SportConfig, SportType } from '../../types/sport';
 
@@ -101,9 +103,10 @@ export default function RecordScreen() {
         text: 'Finish',
         style: 'destructive',
         onPress: async () => {
-          const final = await sensorManager.stopSession();
+          const session = await sensorManager.stopSession();
+          await sessionStorage.saveSession(session);
           setSessionState('completed');
-          setMetrics(final);
+          router.push({ pathname: '/session/[id]', params: { id: session.id } });
         },
       },
     ]);
@@ -206,13 +209,27 @@ export default function RecordScreen() {
           )}
 
           {sessionState === 'completed' && (
-            <Button
-              title="Start New Session"
-              variant="outline"
-              size="lg"
-              fullWidth
-              onPress={handleReset}
-            />
+            <View style={styles.multiActionRow}>
+              <Button
+                title="View Match Stats"
+                variant="primary"
+                size="md"
+                style={[styles.flexBtn, { backgroundColor: activeSportConfig.accentColor }]}
+                onPress={() => {
+                  const last = sensorManager.getLastCompletedSession();
+                  if (last) {
+                    router.push({ pathname: '/session/[id]', params: { id: last.id } });
+                  }
+                }}
+              />
+              <Button
+                title="New Match"
+                variant="outline"
+                size="md"
+                style={styles.flexBtn}
+                onPress={handleReset}
+              />
+            </View>
           )}
         </View>
       </ScrollView>
