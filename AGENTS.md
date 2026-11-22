@@ -29,7 +29,7 @@ The priority is **rapid prototyping directly on a physical smartphone** (via Exp
 ## 3. Technology Stack & Planned Evolution
 
 ### Mobile Application (Current Focus)
-- **Framework:** React Native (`0.81+`) with Expo (`SDK 54+` / Expo Router `v6+`).
+- **Framework:** React Native (`0.86+`) with Expo (`SDK 57+` / Expo Router `v6+`).
 - **Target OS:** iOS (14+) and Android (API 29+ / Android 10+).
 - **Language:** TypeScript (`strict: true`).
 - **Navigation:** Expo Router (file-based routing: `app/(tabs)`).
