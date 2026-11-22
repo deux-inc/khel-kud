@@ -1,12 +1,13 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { Card } from '../../components/ui/Card';
 import { Badge } from '../../components/ui/Badge';
 
 export default function ProfileScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="light-content" backgroundColor="#0B0F17" />
+      <StatusBar style="light" />
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.title}>Player Profile</Text>

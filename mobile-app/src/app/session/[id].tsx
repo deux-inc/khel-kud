@@ -1,6 +1,7 @@
 import { useLocalSearchParams, router } from 'expo-router';
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
 
@@ -9,7 +10,7 @@ export default function SessionDetailScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="light-content" backgroundColor="#0B0F17" />
+      <StatusBar style="light" />
       <View style={styles.container}>
         <Text style={styles.title}>Session Details</Text>
         <Text style={styles.subtitle}>ID: {id}</Text>
